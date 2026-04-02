@@ -1,0 +1,71 @@
+{
+  "name": "@sschepis/as-agent",
+  "version": "0.1.0",
+  "description": "AssemblyScript agent runtime — conversation engine, session management, tool execution, and slash commands compiled to WebAssembly",
+  "license": "MIT",
+  "author": "Sebastian Schepis",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sschepis/claw-code",
+    "directory": "assembly"
+  },
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./wasm": {
+      "import": "./build/release.js",
+      "types": "./build/release.d.ts"
+    },
+    "./assembly": {
+      "assemblyscript": "./assembly/index.ts"
+    }
+  },
+  "files": [
+    "dist/*.js",
+    "dist/*.js.map",
+    "dist/*.d.ts",
+    "dist/*.d.ts.map",
+    "dist/types/",
+    "build/release.wasm",
+    "build/release.js",
+    "build/release.d.ts",
+    "assembly/",
+    "asconfig.json",
+    "README.md"
+  ],
+  "scripts": {
+    "asbuild:debug": "asc assembly/index.ts --target debug",
+    "asbuild:release": "asc assembly/index.ts --target release",
+    "asbuild": "npm run asbuild:debug && npm run asbuild:release",
+    "build:ts": "tsc",
+    "build": "npm run asbuild:release && npm run build:ts",
+    "prepublishOnly": "npm run build",
+    "test": "node --test dist/__tests__/smoke.test.js"
+  },
+  "keywords": [
+    "assemblyscript",
+    "wasm",
+    "webassembly",
+    "agent",
+    "conversation",
+    "llm",
+    "claude",
+    "runtime",
+    "mcp",
+    "tools"
+  ],
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "devDependencies": {
+    "assemblyscript": "^0.27.0",
+    "@assemblyscript/loader": "^0.27.0",
+    "typescript": "^5.4.0"
+  }
+}
