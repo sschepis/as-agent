@@ -6,7 +6,7 @@
   "author": "Sebastian Schepis",
   "repository": {
     "type": "git",
-    "url": "https://github.com/sschepis/claw-code",
+    "url": "https://github.com/sschepis/as-agent",
     "directory": "assembly"
   },
   "type": "module",
